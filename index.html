@@ -24,7 +24,7 @@
 			align-items: center;
 			padding-top: 17px;
 		}
-		.container__calculator{
+		.calculator{
 			background-color: #F4F7FE;
 			width: 542px;
 			height: 442px;
@@ -32,21 +32,111 @@
 			padding-left: 27px;
 			padding-top: 25px;
 		}
-		.container__calculator__label{
+		.calculator__label{
 			font-style: normal;
 			font-weight: 400;
 			font-size: 16px;
 		}
-		.container__info{
+		.result{
 			height: 441px;
 			padding-top: 43px;
 		}
+
+
+
+		.switch {
+			display: inline-block;
+			position: relative;
+			width: 488px;
+			height: 56px;
+			padding: 5px;
+		}
+
+		.switch__text, .switch__text__Rev{
+			z-index: 666;
+			width: 50%;
+			text-align: center;
+			transition: 1.1s;
+		}
+
+		.switch__input {
+			height: 0;
+			width: 0;
+			opacity: 0;
+		}
+
+		.switch__slider{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			position: absolute;
+			cursor: pointer;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			height: 56px;
+			border-radius: 30px;
+			background-color: white;
+			transition: 1s;
+		}
+
+		.switch__slider::before {
+			content: "";
+			position: absolute;
+			cursor: pointer;
+			left: 5px;
+			bottom: 5px;
+			height: 46px;
+			width: 49%;
+			border-radius: 25px;
+			background-color: #2B6Bff;
+			transition: 1s;
+		}
+
+		.switch__input:checked + .switch__slider {
+			background-color: white;
+		}
+
+		.switch__input:checked + .switch__slider::before {
+			transform: translateX(100%);
+		}
+
+		.switch__input + .switch__slider > .switch__text{
+			color: white;
+		}
+
+		.switch__input:checked + .switch__slider > .switch__text{
+			color: black;
+
+		}
+
+		.switch__input + .switch__slider > .switch__text__Rev{
+			color: black;
+
+		}
+
+		.switch__input:checked + .switch__slider > .switch__text__Rev{
+			color: white;
+		}
+
 	</style>
 </head>
 <body>
 	<div class="container">
 		<div class="container__calculator">
 			<label class="container__calculator__label" for="">Организационно-правовая форма:</label>
+
+
+			<label class="switch">
+				<input type="checkbox" class="switch__input">
+				<span class="switch__slider">
+					<p class="switch__text">ИП</p>
+					<p class="switch__text__Rev">ТОО</p>
+				</span>
+			</label>
+
+
 		</div>
 		<div class="container__info"></div>
 	</div>
