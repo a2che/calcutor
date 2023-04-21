@@ -8,9 +8,10 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">	<title>Document</title>
 	<style type="text/css">
-		body{
+		body,h1,h2,p,a{
 			margin: 0;
 			font-family: 'Raleway', sans-serif;
+			text-decoration: none;
 		}
 		.container{
 			width: 100%;
@@ -23,33 +24,158 @@
 			justify-content: space-between;
 			align-items: center;
 			padding-top: 17px;
+			gap: 34px;
 		}
-		.container__calculator{
+		.calculator{
 			background-color: #F4F7FE;
 			width: 542px;
 			height: 442px;
 			border-radius: 20px;
 			padding-left: 27px;
+			padding-right: 27px;
 			padding-top: 25px;
+			box-sizing: border-box;
+			
 		}
-		.container__calculator__label{
+		.perMounth{
+			width: 100%;
+			background-color: #fff;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 5px 5px 5px 24px;
+			box-sizing: border-box;
+			border-radius: 30px;
+			margin-bottom: 11px;
+		}
+		.perMounth__text{
 			font-style: normal;
 			font-weight: 400;
 			font-size: 16px;
 		}
-		.container__info{
-			height: 441px;
-			padding-top: 43px;
+		.perMounth__value{
+			font-style: normal;
+			font-weight: 400;
+			font-size: 16px;
+			color: #fff;
+			background-color: #2B6BFF;
+			border: none;
+			padding: 13px 0;
+			width: 100px;
+			text-align: center;
+			border-radius: 25px;
 		}
+		.perMounth__value::placeholder{
+			color: #fff;
+			font-style: normal;
+			font-weight: 400;
+			font-size: 16px;
+			text-align: center;
+		}
+		.result{
+			height: 442px;
+			padding-top: 43px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+			box-sizing: border-box;
+		}
+		.result__flex{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.result__title{
+			font-style: normal;
+			font-weight: 500;
+			font-size: 22px;
+			width: 100%;
+			max-width: 243px;
+		}
+		.result__value{
+			font-style: normal;
+			font-weight: 600;
+			font-size: 22px;
+			padding: 29px 78px;
+			border: 4px solid #2B6BFF;
+			border-radius: 30px;
+		}
+		 .result__info{
+			background: #F4F7FE;
+			border-radius: 20px;
+			padding: 26px;
+		}
+		.result__info__title{
+			font-style: normal;
+			font-weight: 500;
+			font-size: 22px;
+			margin-bottom: 30px;
+		}
+		.result__info__text{
+			font-style: normal;
+			font-weight: 400;
+			font-size: 16px;
+			width: 100%;
+			max-width: 488px;
+			margin-bottom: 19px;
+		}
+		 
+
+
+
+
+
+
+
+
+
+
+
+
 	</style>
 </head>
 <body>
 	<div class="container">
-		<div class="container__calculator">
-			<label class="container__calculator__label" for="">Организационно-правовая форма:</label>
+		<div class="calculator">
+			<!-- тут первый тоггл -->
+			<!-- тут второй -->
+
+
+			<div class="perMounth">
+				<label for="perMounth__value" class="perMounth__text">Количество документов в месяц</label>
+				<input type="text" placeholder="0" class="perMounth__value">
+			</div>
+			<div class="perMounth">
+				<label for="perMounth__value" class="perMounth__text">Количество сотрудников в месяц</label>
+				<input type="text" placeholder="0" class="perMounth__value">
+			</div>	
+			<div class="dropdown">
+
+			</div>
+			
 		</div>
-		<div class="container__info"></div>
+		<div class="result">
+			<div class="result__flex">
+				<p class="result__title">Ваш оптимальный тариф почти готов</p>
+				<p class="result__value">50000Т</p>
+			</div>
+			<div class="result__info">
+				<p class="result__info__title">Обратите внимание!</p>
+				<p class="result__info__text">Приобретая пакет, Вы экономите 25% от стоимости услуг в  обычном тарифе с индивидуальным расчётом!
+				</p>
+				<p class="result__info__text">Стоимость подготовки налоговой отчетности будет добавлена с учетом применяемого режима налогообложения.
+				</p>
+				<p class="result__info__text">Для плательщиков НДС сумма услуг повышается на 30%.</p>
+			</div>
+			
+		</div>
 	</div>
 	
+
+
+
+
+
 </body>
 </html>
