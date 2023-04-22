@@ -37,8 +37,6 @@
 			box-sizing: border-box;
 			
 		}
-    
-	
 		.perMounth{
 			width: 100%;
 			background-color: #fff;
@@ -54,7 +52,9 @@
 			font-style: normal;
 			font-weight: 400;
 			font-size: 16px;
+			outline: none;
 		}
+
 		.perMounth__value{
 			font-style: normal;
 			font-weight: 400;
@@ -177,7 +177,9 @@
 			font-style: normal;
 			font-weight: 600;
 			font-size: 22px;
-			padding: 29px 78px;
+			width: 241px;
+			text-align: center;
+			padding: 29px 0px;
 			border: 4px solid #2B6BFF;
 			border-radius: 30px;
 		}
@@ -215,23 +217,28 @@
 		<div class="calculator">
 			<label class="container__calculator__label" for="">Организационно-правовая форма:</label>
 
-
-			<label class="switch">
-				<input type="checkbox" class="switch__input">
-				<span class="switch__slider">
-					<p class="switch__text">ИП</p>
+			<label class="switch" >
+				<input type="checkbox" class="switch__input" id="switch1">
+				<span class="switch__slider" >
+					<p class="switch__text" >ИП</p>
 					<p class="switch__text__Rev">ТОО</p>
 				</span>
 			</label>
-
-
+			<label class="container__calculator__label" for="">Организационно-правовая форма:</label>
+			<label class="switch" >
+				<input type="checkbox" class="switch__input" id="switch2">
+				<span class="switch__slider" >
+					<p class="switch__text">УРН</p>
+					<p class="switch__text__Rev">ОУР</p>
+				</span>
+			</label>
 			<div class="perMounth">
 				<label for="perMounth__value" class="perMounth__text">Количество документов в месяц</label>
-				<input type="text" placeholder="0" class="perMounth__value">
+				<input type="text" placeholder="0" class="perMounth__value" id="perMounth__docs">
 			</div>
 			<div class="perMounth">
 				<label for="perMounth__value" class="perMounth__text">Количество сотрудников в месяц</label>
-				<input type="text" placeholder="0" class="perMounth__value">
+				<input type="text" placeholder="0" class="perMounth__value" id="perMounth__people">
 			</div>	
 			<div class="dropdown">
 
@@ -241,7 +248,7 @@
 		<div class="result">
 			<div class="result__flex">
 				<p class="result__title">Ваш оптимальный тариф почти готов</p>
-				<p class="result__value">50000Т</p>
+				<p class="result__value">0 Т</p>
 			</div>
 			<div class="result__info">
 				<p class="result__info__title">Обратите внимание!</p>
@@ -258,7 +265,72 @@
 
 
 
+<script type="text/javascript">
 
+const switch1 =  document.querySelector("#switch1"),
+	switch2 =  document.querySelector("#switch2"),
+	docs = document.querySelector("#perMounth__docs"),   
+	people = document.querySelector("#perMounth__people"),   
+	resultValueBlock = document.querySelector('.result__value')
+var step1firstInput = false,
+	step1secondInput = false,
+	resultValue = 0, 
+	resultDocs = 0,
+	resultPeople = 0
+
+
+function setFirstStepValue (){
+	if(step1firstInput == true && step1secondInput == true){
+		resultValue = 75000
+		resultValueBlock.innerHTML = resultValue + resultDocs + resultPeople +" Т"
+	} else if(step1firstInput == false && step1secondInput == false){
+		resultValue = 50000
+		resultValueBlock.innerHTML = resultValue + resultDocs + resultPeople +" Т"
+	}
+	else if(step1firstInput == true && step1secondInput == false){
+		resultValue = 50000
+		resultValueBlock.innerHTML = resultValue + resultDocs + resultPeople +" Т"
+	}else if(step1firstInput == false && step1secondInput == true){
+		resultValue = 75000
+		resultValueBlock.innerHTML = resultValue + resultDocs + resultPeople +" Т"
+	}else{
+		console.log('error')
+	}
+}
+switch1.addEventListener("change", function () {
+    if (this.checked) {
+		step1firstInput = true
+	}else{
+		step1firstInput = false
+	}
+	setFirstStepValue ()
+})
+switch2.addEventListener("change", function () {
+    if (this.checked) {
+		step1secondInput = true
+	}else{
+		step1secondInput = false
+	}
+	setFirstStepValue ()
+})
+
+const inputHandlerDocs = function(e) {
+	resultDocs =  Number(e.target.value * 1000)
+	resultValueBlock.innerHTML = resultValue + resultDocs + resultPeople +" Т"
+}
+
+docs.addEventListener('input', inputHandlerDocs)
+docs.addEventListener('propertychange', inputHandlerDocs)
+
+
+const inputHandlerPeople = function(e) {
+	resultPeople =  Number(e.target.value * 3000)
+	resultValueBlock.innerHTML = resultValue + resultDocs + resultPeople +" Т"
+}
+people.addEventListener('input', inputHandlerPeople)
+people.addEventListener('propertychange', inputHandlerPeople)
+
+</script>
 
 </body>
 </html>
